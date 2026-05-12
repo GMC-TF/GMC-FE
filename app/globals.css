@@ -1,0 +1,577 @@
+:root {
+  color-scheme: light;
+  /* 네이비 계열 (무난한 톤) */
+  --app-navy: #1e3d5c;
+  --app-navy-deep: #152f47;
+  --app-navy-soft: #2a4d6e;
+  --app-white: #ffffff;
+  --app-text: #1a2c3d;
+  --app-muted: #5c6b7a;
+  --app-muted-light: #8b98a6;
+  --app-border: #dce2e9;
+  --app-surface-muted: #eef2f6;
+  --app-error: #b91c1c;
+  font-family:
+    'Pretendard Variable',
+    Pretendard,
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    'Segoe UI',
+    sans-serif;
+  background: var(--app-white);
+  color: var(--app-text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  line-height: 1.5;
+}
+
+/* 공통 상단 */
+.app-header-wrap {
+  background: var(--app-navy-deep);
+  color: var(--app-white);
+}
+
+.app-header-title {
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  padding: 0.75rem 1.25rem 0.5rem;
+}
+
+.app-header-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0 0.75rem 0.65rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.app-header-link {
+  flex: 1;
+  max-width: 160px;
+  text-align: center;
+  padding: 0.45rem 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.app-header-link:hover {
+  color: var(--app-white);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.app-header-link--on {
+  color: var(--app-white);
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ——— 티켓 발급 페이지 ——— */
+.issue-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--app-white);
+}
+
+.issue-main {
+  flex: 1;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 2.5rem;
+}
+
+.issue-hero {
+  margin-bottom: 1.25rem;
+}
+
+.issue-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--app-text);
+}
+
+.issue-subdate {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--app-muted);
+}
+
+.issue-card {
+  background: var(--app-white);
+  border: 1px solid var(--app-border);
+  border-radius: 8px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.issue-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.issue-card-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--app-text);
+}
+
+.issue-status-pill {
+  font-size: 0.8rem;
+  color: var(--app-muted);
+}
+
+.issue-detail-grid {
+  margin: 0;
+}
+
+.issue-detail-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--app-border);
+  font-size: 0.95rem;
+}
+
+.issue-detail-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.issue-detail-row:first-child {
+  padding-top: 0;
+}
+
+.issue-detail-row dt {
+  margin: 0;
+  color: var(--app-text);
+  font-weight: 500;
+}
+
+.issue-detail-row dd {
+  margin: 0;
+  text-align: right;
+  color: var(--app-text);
+}
+
+.issue-count {
+  margin: 0 0 0.65rem;
+  font-weight: 700;
+  font-size: 1.75rem;
+  letter-spacing: -0.03em;
+}
+
+.issue-count-sep,
+.issue-count-total {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--app-muted-light);
+}
+
+.issue-count-current {
+  color: var(--app-navy-deep);
+}
+
+.issue-progress {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--app-border);
+  overflow: hidden;
+}
+
+.issue-progress-fill {
+  height: 100%;
+  background: var(--app-navy-deep);
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}
+
+.issue-primary-btn {
+  width: 100%;
+  margin: 0.25rem 0 1rem;
+  padding: 1rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--app-navy-deep);
+  color: var(--app-white);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s ease, background 0.15s ease;
+}
+
+.issue-primary-btn:hover:not(:disabled) {
+  background: var(--app-navy);
+  opacity: 0.96;
+}
+
+.issue-primary-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.issue-notice-list {
+  margin: 0.5rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--app-muted);
+  font-size: 0.92rem;
+}
+
+.issue-notice-list li + li {
+  margin-top: 0.35rem;
+}
+
+.issue-muted {
+  color: var(--app-muted);
+}
+
+.issue-state {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.issue-error {
+  margin: 0 0 1rem;
+  color: var(--app-error);
+  font-size: 0.95rem;
+}
+
+.issue-retry {
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--app-navy-deep);
+  background: var(--app-white);
+  color: var(--app-navy-deep);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.issue-inline-error {
+  margin: -0.25rem 0 0.75rem;
+  font-size: 0.88rem;
+  color: var(--app-error);
+}
+
+/* ——— 마이페이지 ——— */
+.mypage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--app-white);
+}
+
+.mypage-main {
+  flex: 1;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 1.25rem 1.25rem 2.5rem;
+}
+
+.mypage-banner {
+  margin: 0 0 1rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  background: var(--app-surface-muted);
+  border: 1px solid var(--app-border);
+  font-size: 0.9rem;
+  color: var(--app-navy-deep);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.mypage-banner-dismiss {
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: var(--app-navy-soft);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0.15rem 0;
+}
+
+.mypage-profile {
+  background: linear-gradient(145deg, var(--app-navy) 0%, var(--app-navy-deep) 100%);
+  color: var(--app-white);
+  border-radius: 12px;
+  padding: 1.1rem 1.15rem;
+  margin-bottom: 1.25rem;
+}
+
+.mypage-profile-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mypage-avatar {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.mypage-profile-text {
+  min-width: 0;
+}
+
+.mypage-name {
+  margin: 0 0 0.2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.mypage-student-id {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.88;
+}
+
+.mypage-profile-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.22);
+  margin: 0.9rem 0 0.65rem;
+}
+
+.mypage-profile-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+  opacity: 0.92;
+}
+
+.mypage-section {
+  margin-bottom: 1.25rem;
+}
+
+.mypage-section-title {
+  margin: 0 0 0.65rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--app-text);
+}
+
+.mypage-summary-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+.mypage-summary-card {
+  background: var(--app-white);
+  border: 1px solid var(--app-border);
+  border-radius: 10px;
+  padding: 1rem 0.85rem;
+  text-align: center;
+}
+
+.mypage-summary-num {
+  margin: 0 0 0.25rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--app-navy-deep);
+  letter-spacing: -0.02em;
+}
+
+.mypage-summary-label {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--app-muted);
+}
+
+.mypage-ticket-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.mypage-ticket-card {
+  background: var(--app-white);
+  border: 1px solid var(--app-border);
+  border-radius: 10px;
+  padding: 0.95rem 1rem;
+}
+
+.mypage-ticket-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.mypage-ticket-event {
+  margin: 0 0 0.2rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--app-text);
+}
+
+.mypage-ticket-date {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--app-muted);
+}
+
+.mypage-badge {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.28rem 0.5rem;
+  border-radius: 4px;
+  letter-spacing: 0.01em;
+}
+
+.mypage-badge--navy {
+  background: var(--app-navy-deep);
+  color: var(--app-white);
+}
+
+.mypage-badge--muted {
+  background: var(--app-surface-muted);
+  color: var(--app-muted);
+  border: 1px solid var(--app-border);
+}
+
+.mypage-ticket-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--app-border);
+}
+
+.mypage-ticket-code {
+  font-size: 0.78rem;
+  color: var(--app-muted-light);
+}
+
+.mypage-ticket-detail {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--app-navy-soft);
+  text-decoration: none;
+}
+
+.mypage-ticket-detail:hover {
+  text-decoration: underline;
+}
+
+.mypage-settings {
+  margin-bottom: 1rem;
+}
+
+.mypage-settings-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--app-border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--app-white);
+}
+
+.mypage-settings-list li + li {
+  border-top: 1px solid var(--app-border);
+}
+
+.mypage-settings-link {
+  display: block;
+  padding: 0.95rem 1rem;
+  font-size: 0.95rem;
+  color: var(--app-text);
+  text-decoration: none;
+}
+
+.mypage-settings-link:hover {
+  background: var(--app-surface-muted);
+}
+
+.mypage-logout {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: none;
+  border-radius: 10px;
+  background: var(--app-surface-muted);
+  color: var(--app-text);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, opacity 0.15s ease;
+}
+
+.mypage-logout:hover:not(:disabled) {
+  background: var(--app-border);
+}
+
+.mypage-logout:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.mypage-muted {
+  color: var(--app-muted);
+}
+
+.mypage-state {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.mypage-error {
+  margin: 0 0 1rem;
+  color: var(--app-error);
+  font-size: 0.95rem;
+}
+
+.mypage-retry {
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--app-navy-deep);
+  background: var(--app-white);
+  color: var(--app-navy-deep);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mypage-inline-error {
+  margin: 0.75rem 0 0;
+  font-size: 0.88rem;
+  color: var(--app-error);
+  text-align: center;
+}
